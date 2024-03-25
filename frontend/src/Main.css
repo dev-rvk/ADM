@@ -1,0 +1,59 @@
+.Index-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 20px;
+  background-color: #f6f9ec;
+  color: rgb(249, 249, 249); /* Set text color to white */
+}
+
+.Index-title {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: white; /* Set text color to white */
+}
+
+.Index-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: #f6f9ec;
+}
+
+.Index-card {
+  width: 18rem;
+  margin: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #22211d;
+  color: white; /* Set text color to white */
+}
+
+.Index-card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.Button {
+  margin-top: 15px;
+  color: white; /* Set text color to white */
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: right;
+  margin-bottom: 20px; /* Add some margin to separate from the card container */
+}
+/* Main.css */
+
+.Index-container {
+  position: relative; /* Make the container position relative */
+}
+
+.refresh-button {
+  position: absolute; /* Set the button position to absolute */
+  top: 30px; /* Distance from the top of the container */
+  right: 30px; /* Distance from the right of the container */
+}

@@ -1,0 +1,25 @@
+{
+    "devices": [
+      {
+        "Android Version": "13",
+        "Build Number": "TQ3A.230805.001.S1",
+        "Manufacturer": "Google",
+        "Model": "Pixel 4a",
+        "Serial": "28271JEC200003"
+      },
+      {
+        "Android Version": "12",
+        "Build Number": "TQ3A.230815.001.S5",
+        "Manufacturer": "Google",
+        "Model": "Pixel 6a",
+        "Serial": "28271JEC212003"
+      },
+      {
+        "Android Version": "12",
+        "Build Number": "TQ3A.230815.001.S5",
+        "Manufacturer": "Google",
+        "Model": "Pixel 6a",
+        "Serial": "28271JEC212003"
+      }	
+    ]
+  }
