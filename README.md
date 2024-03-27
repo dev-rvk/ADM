@@ -54,7 +54,8 @@
 
 #### Back-end
 - Flask (Python)
-
+- ppadb
+- android-sdk commandline tools
 
 
 
