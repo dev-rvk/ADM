@@ -3,6 +3,10 @@
 </div>
 <div align="center">
    <strong>A cross platform web app to manage adb devices and emulators</strong><br>
+  Note: This is the clone of two parent repositories:
+
+  - [backend](https://github.com/dev-rvk/ADM-server)
+  - [frontend](https://github.com/ira-sheth/ADM-mARIO)
   <br> <br>
   
 </div>
@@ -11,16 +15,16 @@
 <details>
 <summary>Table of Contents</summary>
 
-- [Top Features](#top-features)
-- [Links](#links)
-- [Tech Stack](#tech-stack)
-- [Progress](#progress)
-- [Future Scope](#future-scope)
+- [📝Top Features](#top-features)
+- [🔗Links](#links)
+- [🤖Tech-Stack](#tech-stack)
+    - [Front-end](#front-end)
+    - [Back-end](#back-end)
+- [📈Progress](#progress)
+- [🔮Future Scope](#future-scope)
 - [ANDROID EMULATOR](#android-emulator)
-- [Project Setup](#project-setup)
-
-- [Team Members](#team-members)
-
+- [🛠Project Setup](#project-setup)
+- [👨‍💻Team Members](#team-members)
 - [Screenshots](#screenshots)
 
 </details>
@@ -67,13 +71,12 @@
 - [x] <strong>Screen Capture</strong> - Screen cast of the android device on the app.
 - [x] <strong>ADB-Shell</strong> - Opens command window in the app to access and manage the file system.
 - [x] <strong>Network Logs</strong> - Displays all the incoming and outgoing connections made by the device.
-
+- [x] <strong>Emulators</strong> - We have two hardware emolators working that are hardcoded for now
 
 
 ## 🔮Future Scope
 
-
-
+- Replace all the server side app openings so that the client can access the devices connected to the server.
 - An Emulator-Manager which will have the option of creating custom emulators and allow us to emulate software and hardware version of different devices with different android versions.
 - In-built File-Manager.
 - Login/Logout system.
@@ -95,13 +98,31 @@
 1. Clone the project
 
 ```bash
-git clone https://github.com/dev-rvk/ADM-server.git
+git clone https://github.com/dev-rvk/ADM.git
 ```
 
-2. Go to the project directory
+2. Go to the backend directory
 
 ```bash
-cd ADM-server
+cd backend
+```
+
+3. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+4. Start the server
+
+```bash
+python server.py
+```
+
+5. Go to the frontend directory
+
+```bash
+cd ../frontend
 ```
 
 3. Install dependencies
@@ -110,13 +131,10 @@ cd ADM-server
 npm install
 ```
 
-4. Start the server
+4. Start the web app
 
 ```bash
 npm start
-```
-```bash
-python server.py
 ```
 
 
