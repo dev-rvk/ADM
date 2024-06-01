@@ -1,5 +1,5 @@
 # Use a base image with Python for Flask
-FROM ubuntu:22.04
+FROM --platform=linux/amd64 ubuntu:22.04
 
 # Set up working directory
 WORKDIR /app
@@ -38,7 +38,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Set JAVA_HOME environment variable
-ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-arm64
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 ENV PATH=$JAVA_HOME/bin:$PATH
 
 # Install required packages for AVD
@@ -48,7 +48,7 @@ RUN sdkmanager --install "platform-tools" "build-tools;34.0.0" "platforms;androi
 
 # Download and extract the emulator
 # replace with wget url
-COPY docker-resources/emulator-linux_aarch64.zip emulator.zip  
+COPY docker-resources/emulator-linux_x64.zip emulator.zip  
 RUN mkdir $ANDROID_HOME/emulator \
     && unzip emulator.zip -d /tmp \
     && mv /tmp/emulator/* $ANDROID_HOME/emulator \
@@ -64,10 +64,15 @@ ENV PATH=$ANDROID_HOME/emulator:$PATH
 # RUN sdkmanager "emulator"
 
 # Download the required images
-RUN sdkmanager "system-images;android-34;default;arm64-v8a"
+RUN sdkmanager "system-images;android-34;default;x86_64"
 
 # Create AVD
-RUN avdmanager create avd -n Pixel-3a-14 -k "system-images;android-34;default;arm64-v8a" --device "pixel_3a"
+RUN avdmanager create avd -n Pixel-3a-14 -k "system-images;android-34;default;x86_64" --device "pixel_3a"
+
+
+# KVM
+RUN apt-get update && \
+    apt-get install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
 
 # Run AVD 
 # RUN emulator @Pixel-3a-14 -no-window -no-audio

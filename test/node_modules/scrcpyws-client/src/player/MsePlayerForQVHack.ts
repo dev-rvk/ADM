@@ -1,0 +1,68 @@
+import { MsePlayer } from './MsePlayer';
+import ScreenInfo from '../ScreenInfo';
+import Rect from '../Rect';
+import Size from '../Size';
+import VideoSettings from '../VideoSettings';
+
+export class MsePlayerForQVHack extends MsePlayer {
+    public static readonly preferredVideoSettings: VideoSettings = new VideoSettings({
+        lockedVideoOrientation: -1,
+        bitrate: 8000000,
+        maxFps: 30,
+        iFrameInterval: 10,
+        bounds: new Size(720, 720),
+        sendFrameMeta: false,
+    });
+
+    constructor(udid: string, tag: HTMLVideoElement) {
+        super(udid, undefined, 'MSE_Player_For_QVHack', tag);
+    }
+
+    protected handleVideoResize(videoWidth: number, videoHeight: number): void {
+        super.handleVideoResize(videoWidth, videoHeight);
+        let w = videoWidth;
+        let h = videoHeight;
+        if (this.bounds) {
+            let { w: boundsWidth, h: boundsHeight } = this.bounds;
+            if (w > boundsWidth || h > boundsHeight) {
+                let scaledHeight;
+                let scaledWidth;
+                if (boundsWidth > w) {
+                    scaledHeight = h;
+                } else {
+                    scaledHeight = (boundsWidth * h) / w;
+                }
+                if (boundsHeight > scaledHeight) {
+                    boundsHeight = scaledHeight;
+                }
+                if (boundsHeight == h) {
+                    scaledWidth = w;
+                } else {
+                    scaledWidth = (boundsHeight * w) / h;
+                }
+                if (boundsWidth > scaledWidth) {
+                    boundsWidth = scaledWidth;
+                }
+                w = boundsWidth | 0;
+                h = boundsHeight | 0;
+                this.tag.style.maxWidth = `${w}px`;
+                this.tag.style.maxHeight = `${h}px`;
+            }
+        }
+        const realScreen = new ScreenInfo(new Rect(0, 0, videoWidth, videoHeight), new Size(w, h), 0);
+        this.emit('input-video-resize', realScreen);
+        this.setScreenInfo(new ScreenInfo(new Rect(0, 0, w, h), new Size(w, h), 0));
+    }
+
+    protected needScreenInfoBeforePlay(): boolean {
+        return false;
+    }
+
+    public getPreferredVideoSetting(): VideoSettings {
+        return MsePlayerForQVHack.preferredVideoSettings;
+    }
+
+    public setVideoSettings(): void {
+        return;
+    }
+}
