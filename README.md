@@ -1,5 +1,5 @@
 > [!IMPORTANT]  
-> This repository is being updated in another repository for the version 2 of the app check it here [ADM-V2]([https://website-name.com](https://github.com/dev-rvk/ADM-V2))
+> This repository is being updated in another repository for the version 2 of the app check it here [ADM-V2](https://github.com/dev-rvk/ADM-V2)
 <div align="center">
 <h1>ANDROID DEVICE MANAGER</h1>
 </div>
